@@ -1,0 +1,3170 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mahadi Hassan - Tech & Finance Founder | Rokto Bondhu & Tutorly AI">
+    <title>Mahadi Hassan - Tech & Finance Innovator</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- tsParticles -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        neon: {
+                            blue: '#00D4FF',
+                            purple: '#7B2FFF',
+                            pink: '#FF2E97'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%, 100%': { opacity: 1 },
+                            '50%': { opacity: 0.5 },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+       /* Simple hover effect for test score cards */
+        #test-scores .bg-gray-800\/50:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Score number animation on hover */
+        #test-scores .text-3xl:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Book Card Styles */
+        .book-card {
+            transition: all 0.3s ease;
+        }
+
+        .book-card img {
+            transition: transform 0.3s ease;
+            object-fit: cover;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Learning Tab Styles */
+        .learning-tab {
+            transition: all 0.3s ease;
+        }
+
+        .learning-tab:hover {
+            transform: translateY(-2px);
+        }
+
+        .learning-tab.active {
+            transform: translateY(-2px);
+        }
+
+        /* Progress Bar Animation */
+        @keyframes progressGrow {
+            from {
+                width: 0;
+            }
+        }
+
+        /* Book Status Colors */
+        .bg-green-500\/90 {
+            background: rgba(34, 197, 94, 0.9);
+        }
+
+        .bg-yellow-500\/90 {
+            background: rgba(234, 179, 8, 0.9);
+        }
+
+
+
+        /* Project Image Slider Styles */
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slider-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .slider-slide img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Navigation button styles */
+        .slider-prev,
+        .slider-next {
+            transition: all 0.3s ease;
+        }
+
+        .slider-prev:hover,
+        .slider-next:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Dot indicator animations */
+        .slider-dot {
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot:hover {
+            transform: scale(1.5);
+        }
+
+        /* Loading state for images */
+        .slider-slide img {
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 640px) {
+            .slider-prev,
+            .slider-next {
+                opacity: 1;
+                padding: 0.5rem;
+            }
+        }
+
+
+        /* Typing Animation Styles */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            animation: blink 1s infinite;
+            color: #00D4FF;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Neon Glow Effect */
+        .neon-glow {
+            box-shadow: 
+                0 0 20px rgba(123, 47, 255, 0.1),
+                0 0 40px rgba(123, 47, 255, 0.05),
+                inset 0 0 20px rgba(123, 47, 255, 0.05);
+        }
+
+        /* Emotion Button Styles */
+        .emotion-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(107, 114, 128, 0.2);
+            border: 1px solid rgba(107, 114, 128, 0.3);
+            font-size: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .emotion-btn:hover {
+            transform: scale(1.2);
+            background: rgba(123, 47, 255, 0.2);
+            border-color: rgba(123, 47, 255, 0.5);
+        }
+
+        .emotion-btn.selected {
+            background: rgba(123, 47, 255, 0.3);
+            border-color: rgba(123, 47, 255, 0.7);
+            transform: scale(1.1);
+        }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(31, 41, 55, 0.5);
+            border-radius: 2px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #7B2FFF, #FF2E97);
+            border-radius: 2px;
+        }
+
+        /* Profile Image Glow */
+        .rounded-full.border-4 {
+            box-shadow: 
+                0 0 30px rgba(0, 212, 255, 0.3),
+                0 0 60px rgba(0, 212, 255, 0.1);
+        }
+
+        /* Animation Delays */
+        .delay-1000 {
+            animation-delay: 1000ms;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .lg\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        /* Custom CSS for animations and effects */
+        .gradient-text {
+            background: linear-gradient(135deg, #00D4FF, #7B2FFF, #FF2E97);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+            background-size: 200% 200%;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .neon-border {
+            box-shadow: 
+                0 0 5px rgba(0, 212, 255, 0.5),
+                0 0 10px rgba(0, 212, 255, 0.3),
+                0 0 15px rgba(0, 212, 255, 0.1);
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 40px rgba(0, 212, 255, 0.2),
+                0 0 20px rgba(123, 47, 255, 0.2);
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .progress-fill {
+            transition: width 1.5s ease-out;
+        }
+        
+        /* Smooth scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a2e;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #00D4FF, #7B2FFF);
+            border-radius: 4px;
+        }
+        
+        /* Mobile menu animation */
+        .hamburger-line {
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Particle container */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            #particles-js {
+                opacity: 0.3;
+            }
+        }
+
+
+        /* Enhanced Skills Section Styles */
+        .skill-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateX(5px);
+        }
+
+        .skill-item:hover .progress-fill {
+            box-shadow: 0 0 10px currentColor;
+        }
+
+        /* Skill Card Hover Effects */
+        .bg-gray-800\/50:hover {
+            box-shadow: 
+                0 10px 30px rgba(0, 212, 255, 0.1),
+                0 0 15px rgba(123, 47, 255, 0.1);
+        }
+
+        /* Icon Animations */
+        .bg-gray-800\/50 .fa-crown,
+        .bg-gray-800\/50 .fa-chess-king,
+        .bg-gray-800\/50 .fa-flask,
+        .bg-gray-800\/50 .fa-code,
+        .bg-gray-800\/50 .fa-chart-line,
+        .bg-gray-800\/50 .fa-rocket {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Tool Icons Hover */
+        .group:hover .bg-gray-700 {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 47, 255, 0.1));
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        /* Competency Badge Hover */
+        .bg-gray-700\/50:hover {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(123, 47, 255, 0.2));
+            transform: scale(1.05);
+            cursor: default;
+        }
+
+        /* Progress Bar Animation Enhancement */
+        .progress-fill {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .grid.lg\:grid-cols-6 {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+            
+            .bg-gray-800\/50 {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 overflow-x-hidden">
+    
+    <!-- Loading Screen Overlay -->
+    <div id="loading-screen" style="position:fixed;top:0;left:0;width:100vw;height:100vh;background:#18181b;z-index:9999;display:flex;align-items:center;justify-content:center;">
+        <div>
+            <svg width="60" height="60" viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="20" stroke="#7B2FFF" stroke-width="4" fill="none" stroke-linecap="round">
+                    <animate attributeName="stroke-dasharray" values="1,200;89,200;89,200" times="0;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+                    <animate attributeName="stroke-dashoffset" values="0;-35;-124" times="0;0.5;1" dur="1.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+            <div style="color:#fff;text-align:center;margin-top:16px;font-size:1.2rem;">Loading...</div>
+        </div>
+    </div>
+
+    <!-- Particle Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <a href="#home" class="logo-container">
+                    <img src="logo.webp" alt="MH Logo" loading="lazy" class="rounded-full h-8 w-auto">
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link hover:text-neon-blue transition-colors">Home</a>
+                    <a href="#about" class="nav-link hover:text-neon-blue transition-colors">About</a>
+                    <a href="#projects" class="nav-link hover:text-neon-blue transition-colors">Projects</a>
+                    <a href="#experience" class="nav-link hover:text-neon-blue transition-colors">Certifications</a>
+                    <a href="#professional-development" class="nav-link hover:text-neon-blue transition-colors">Internship</a>
+                    <a href="#volunteering-leadership" class="nav-link hover:text-neon-blue transition-colors">Volunteering</a>
+                    <a href="#publications" class="nav-link hover:text-neon-blue transition-colors">Research</a>
+                    <a href="#self-learning" class="nav-link hover:text-neon-blue transition-colors">Self-Learning</a>
+
+                    <!-- <a href="#contact" class="nav-link hover:text-neon-blue transition-colors">Contact</a> -->
+                    <!-- <button id="theme-toggle" class="ml-4 p-2 rounded-lg hover:bg-gray-800 transition-colors" aria-label="Toggle theme">
+                        <i class="fas fa-moon text-yellow-400"></i>
+                    </button> -->
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden hamburger p-2" aria-label="Toggle mobile menu" aria-expanded="false">
+                    <div class="space-y-1">
+                        <div class="hamburger-line w-6 h-0.5 bg-gray-300"></div>
+                        <div class="hamburger-line w-6 h-0.5 bg-gray-300"></div>
+                        <div class="hamburger-line w-6 h-0.5 bg-gray-300"></div>
+                    </div>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden py-4 border-t border-gray-800">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="mobile-nav-link hover:text-neon-blue transition-colors">Home</a>
+                    <a href="#about" class="mobile-nav-link hover:text-neon-blue transition-colors">About</a>
+                    <a href="#projects" class="mobile-nav-link hover:text-neon-blue transition-colors">Projects</a>
+                    <a href="#experience" class="mobile-nav-link hover:text-neon-blue transition-colors">Certifications</a>
+                    <a href="#professional-development" class="mobile-nav-link hover:text-neon-blue transition-colors">Internship</a>
+                    <a href="#volunteering-leadership" class="mobile-nav-link hover:text-neon-blue transition-colors">Volunteering</a>
+                    <a href="#publications" class="mobile-nav-link hover:text-neon-blue transition-colors">Research</a>
+                    <a href="#self-learning" class="mobile-nav-link hover:text-neon-blue transition-colors">Self-Learning</a>
+
+                    <!-- <a href="#contact" class="mobile-nav-link hover:text-neon-blue transition-colors">Contact</a> -->
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+<!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center relative overflow-hidden ">
+    <div class="container mx-auto px-4 z-10">
+        <div class="flex items-center justify-center mt-16">
+            
+            <!-- Centered Main Content -->
+            <div class="text-center reveal max-w-4xl mx-auto">
+               <!-- Profile Image -->
+                <div class="mb-8 flex justify-center">
+                    <div class="relative inline-block">
+                        <!-- LinkedIn-style Cover Image with actual image -->
+                        <div class="absolute -inset-8 mt-10 w-96 h-28 md:w-96 md:h-40 rounded-2xl overflow-hidden shadow-2xl">
+                            <img src="flag2.webp" 
+                                alt="Professional Cover Background" 
+                                loading="lazy"
+                                class="w-full h-full object-cover transform scale-x-[-1]">
+                            <!-- Dark overlay for better contrast -->
+                            <div class="absolute inset-0 bg-gradient-to-br from-black/30 via-transparent to-black/20"></div>
+                        </div>
+                        
+                        <!-- Profile Photo -->
+                        <div class="relative mt-6 z-10 w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white shadow-2xl">
+                            <img src="logo.webp" 
+                                alt="Marufur Rahman"
+                                loading="lazy" 
+                                class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                        </div>
+                        
+                        <!-- Status Indicator -->
+                        <div class="absolute bottom-2 right-2 z-20 w-6 h-6 bg-green-500 rounded-full border-4 border-white animate-pulse shadow-lg"></div>
+                    </div>
+                </div>
+                
+                <!-- Name and Title -->
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 text-center">
+                    <span class="gradient-text">Marufur Rahman</span>
+                </h1>
+                
+                <!-- Animated Typing Text -->
+                <div class="text-xl md:text-2xl text-gray-400 mb-8 text-center h-8 flex justify-center">
+                    <div>
+                        <span id="typed-text" class="text-neon-purple font-semibold"></span>
+                        <span class="typing-cursor">|</span>
+                    </div>
+                </div>
+                
+                <div role="group" aria-label="Top skills" class="mx-auto max-w-5xl rounded-2xl border border-neon-purple/30 bg-gray-800/50 backdrop-blur-sm p-4 mb-4 md:p-5 shadow-md transition-colors hover:border-neon-purple">
+                    <div class="grid grid-cols-[auto_1fr] items-start gap-3 md:gap-4">
+                        <!-- Diamond icon -->
+                        <svg class="h-7 w-7 text-neon-blue" viewBox="0 0 24 24" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 3 20 9 12 21 4 9 12 3"></polygon>
+                            <polyline points="4 9 12 9 20 9"></polyline>
+                            <polyline points="8 9 12 21 16 9"></polyline>
+                        </svg>
+
+                        <!-- Content -->
+                        <div class="min-w-0">
+                            <h3 class="text-xl md:text-2xl font-bold leading-tight bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">Top skills</h3>
+                            <p class="mt-1 text-base md:text-lg text-gray-200">
+                                Entrepreneurship • Leadership • Youth Mentoring • Project management • Programming
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Company Badges -->
+                <div class="flex flex-wrap gap-4 mb-8 justify-center">
+                    <div class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full border border-neon-blue/30 hover:border-neon-blue transition-colors">
+                        <span class="text-sm">🩸 Founder @ <span class="text-neon-blue font-semibold">Rokto Bondhu</span></span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full border border-neon-purple/30 hover:border-neon-purple transition-colors">
+                        <span class="text-sm">🏢 Founder @ <span class="text-neon-purple font-semibold">RISDY</span></span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full border border-neon-purple/30 hover:border-neon-purple transition-colors">
+                        <span class="text-sm">🤖 Founder @ <span class="text-neon-purple font-semibold">Tutorly AI</span></span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full border border-neon-purple/30 hover:border-neon-purple transition-colors">
+                        <span class="text-sm">🧑‍💻 Founder @ <span class="text-neon-purple font-semibold">Emblem Club</span></span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full border border-neon-purple/30 hover:border-neon-purple transition-colors">
+                        <span class="text-sm">🏏 Founder @ <span class="text-neon-purple font-semibold">Thunder XI</span></span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full border border-neon-purple/30 hover:border-neon-purple transition-colors">
+                        <span class="text-sm">📦 Founder @ <span class="text-neon-purple font-semibold">Dealivarly</span></span>
+                    </div>
+                    <div class="px-4 py-2 bg-gray-800/50 backdrop-blur-sm rounded-full border border-neon-purple/30 hover:border-neon-purple transition-colors">
+                        <span class="text-sm">📰 Founder @ <span class="text-neon-purple font-semibold">One News AI</span></span>
+                    </div>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div class="flex justify-center mt-4">
+                    <a href="#projects" class="px-8 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-lg font-semibold hover:scale-105 transition-transform text-center">
+                        <i class="fas fa-briefcase mr-2"></i>View Work
+                    </a>
+                </div>
+            </div>
+                 
+        </div>         
+    </div>
+    
+    <!-- Animated Background Elements -->
+    <div class="absolute top-20 left-10 w-72 h-72 bg-neon-blue/10 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-neon-purple/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <i class="fas fa-chevron-down text-gray-500"></i>
+    </div>
+</section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="reveal">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">About</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 neon-border">
+                        <div class="text-center mb-8">
+                            <h3 class="text-2xl font-bold text-white mb-2">Marufur Rahman</h3>
+                        </div>
+                        
+                        <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                            I'm Marufur Rahman-but most people call me Maruf. I’m a tech and finance enthusiast and a passionate problem solver with a strong interest in AI and scalable backend systems. I’m deeply curious about advanced algorithms and high-performance computing—tools I consider essential for tackling complex real-world problems. <br> <br>
+                            I focus on turning innovative ideas into reality, always seeking opportunities where technology and business intersect to create meaningful impact. (Yes, my ESTP result doesn’t lie!). <br> <br>
+
+                            I’m originally from Bhola, Bangladesh—not an opportunity-rich area, but a river-eroded island, where the unpredictable challenges of shifting rivers have shaped a mindset of resilience, curiosity, reasoning, and a touch of unpredictability. Growing up there instilled in me resilience, curiosity, and untamed energy. <br> <br>
+
+                            I began exploring technology through competitive programming, which sparked my love for solving challenging problems and building intelligent systems. Since then, I have continually pushed myself to improve and have developed impactful projects, including AI-based initiatives and non-profit organizations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-800/30">
+        <div class="container mx-auto px-4">
+            <div class="reveal">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Initiatives</h2>
+                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+                    With my programming skills and a mindset for creating diverse solutions.
+                </p>
+            
+                <!-- Project Cards Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+                    <!-- Project 1: Rokto Bondhu -->
+                    <div class="project-card card-hover bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden" data-category="web product">
+                        <div class="relative h-[16rem] overflow-hidden rounded-lg">
+                            <!-- Added overlay for video playback -->
+                            <div id="heartbeatOverlay" class="absolute inset-0 w-full h-full bg-black/30 flex items-center justify-center cursor-pointer">
+                                <i class="fas fa-play-circle text-white text-6xl opacity-70"></i>
+                            </div>
+                            <!-- Video (.mp4) -->
+                            <video id="heartbeatVideo" 
+                                class="absolute inset-0 w-full h-full object-cover" 
+                                playsinline controls preload="metadata">
+                            <source src="rokto.mp4" loading="lazy" type="video/mp4" />
+                            </video>
+                        </div>
+
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Rokto Bondhu</h3>
+                            <p class="text-gray-400 text-sm mb-4">
+                            • Founder & CEO, Rokto Bondhu: Bangladesh's largest and first free peer-to-peer blood service platform. <br>
+                            • Contributed to saving thousands of lives through Rokto Bondhu. <br>
+                            • Built a nationwide donor network with thousands of active donors across Bangladesh.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Tutorly AI -->
+                    <div class="project-card card-hover bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden" data-category="ai product">
+                        <div class="relative h-[16rem] overflow-hidden">
+                            <video class="absolute inset-0 w-full h-full object-cover" autoplay muted loop playsinline>
+                                <source src="tutorly.mp4" loading="lazy" type="video/mp4" />
+                            </video>
+                            <div class="absolute top-4 left-4 px-3 py-1 bg-green-600/90 backdrop-blur-sm rounded-full text-xs font-semibold text-white z-10">
+                                Final stage project
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Tutorly AI</h3>
+                            <p class="text-gray-400 text-sm mb-4">
+                                • Founder & CEO, Tutorly AI: Building the world’s first 24/7 AGT (Artificial General Teacher) aligned with academic curriculum (currently NCTB – Bangladesh). <br>
+                                • Mission: To solve Bloom’s 2 Sigma Problem by making one-on-one, high-quality tutoring accessible at scale. <br>
+                                • Innovation: Developing AGT to deliver individualized instruction globally, simulating the experience of a live tutor on a Zoom call.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Project 3: Risdy -->
+                    <div class="project-card card-hover bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden" data-category="web product">
+                        <!-- Image Slider Container -->
+                        <div class="relative h-[16rem] bg-gradient-to-br from-green-600 to-teal-600 overflow-hidden group">
+                            <!-- Slider Wrapper -->
+                            <div class="slider-wrapper flex transition-transform duration-500 ease-in-out h-full" data-slider="risdy">
+                                <!-- Slide 1 -->
+                                <div class="slider-slide min-w-full h-full">
+                                    <img src="assets/img/risdy.webp" 
+                                        loading="lazy"
+                                        alt="RISDY Community Outreach" 
+                                        class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                </div>
+
+                                <!-- Slide 2 (Video) -->
+                                <div class="slider-slide min-w-full h-full relative">
+                                    <video 
+                                        src="risdy.mp4" 
+                                        class="w-full h-full object-cover" 
+                                        autoplay 
+                                        muted 
+                                        loop 
+                                        playsinline 
+                                        loading="lazy">
+                                    </video>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                </div>
+                                
+                                <!-- Slide 2 -->
+                                <div class="slider-slide min-w-full h-full">
+                                    <img src="assets/img/risdy2.webp"
+                                        loading="lazy"
+                                        alt="Children Education Program" 
+                                        class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                </div>
+                                
+                                <!-- Slide 3 -->
+                                <div class="slider-slide min-w-full h-full">
+                                    <img src="assets/img/risdy3.webp" 
+                                        loading="lazy"
+                                        alt="Healthcare Support Initiative" 
+                                        class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                </div>
+                                
+                                <!-- Slide 4 -->
+                                <div class="slider-slide min-w-full h-full">
+                                    <img src="assets/img/risdy4.webp"
+                                        loading="lazy"
+                                        alt="Financial Literacy Workshop" 
+                                        class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                </div>
+                                
+                                <!-- Slide 5 -->
+                                <div class="slider-slide min-w-full h-full">
+                                    <img src="assets/img/risdy5.webp" 
+                                        loading="lazy"
+                                        alt="Community Development" 
+                                        class="w-full h-full object-cover">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Navigation Arrows -->
+                            <button class="slider-prev absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70 z-10" 
+                                    onclick="slideProject('risdy', 'prev')">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-next absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/70 z-10" 
+                                    onclick="slideProject('risdy', 'next')">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            
+                            <!-- Slide Indicators -->
+                            <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+                                <button class="slider-dot w-2 h-2 rounded-full bg-white/50 hover:bg-white transition-colors" 
+                                        onclick="goToSlide('risdy', 0)" data-slide="0"></button>
+                                <button class="slider-dot w-2 h-2 rounded-full bg-white/30 hover:bg-white transition-colors" 
+                                        onclick="goToSlide('risdy', 1)" data-slide="1"></button>
+                                <button class="slider-dot w-2 h-2 rounded-full bg-white/30 hover:bg-white transition-colors" 
+                                        onclick="goToSlide('risdy', 2)" data-slide="2"></button>
+                                <button class="slider-dot w-2 h-2 rounded-full bg-white/30 hover:bg-white transition-colors" 
+                                        onclick="goToSlide('risdy', 3)" data-slide="3"></button>
+                                <button class="slider-dot w-2 h-2 rounded-full bg-white/30 hover:bg-white transition-colors" 
+                                        onclick="goToSlide('risdy', 4)" data-slide="4"></button>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">RISDY</h3>
+                            <!-- <div class="text-sm text-gray-500 mb-3">Rational Initiative for Social Development by Youth</div> -->
+                            
+                            <!-- Key Achievements -->
+                            <div class="space-y-2 text-gray-400 text-sm mb-4">
+                                <div class="flex items-start">
+                                    <span>• Founder & CEO leading non-profit supporting underprivileged communities</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span>• Raised six-figure donations for community programs</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <span>• Developed programs for children with special needs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 4: Emblem Club -->
+                    <div class="project-card card-hover bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden" data-category="web product">
+                        <div class="h-[16rem] bg-[#010604] flex items-center justify-center">
+                            <img src="assets/img/emblem.webp" loading="lazy" alt="Chart" class="h-full object-contain opacity-80" />
+                        </div>
+
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Emblem Club</h3>
+                            <p class="text-gray-400 text text-sm mb-4">
+                                • Founder & President, Emblem Club: A versatile Programming and AI club. <br>
+                                • Organizes monthly seminars  with leading professionals in the field. <br>
+                                • Promotes interest in coding, AI, and academic enrichment  among students in underprivileged areas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Thunder XI -->
+                    <div class="project-card card-hover bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden" data-category="web product">
+                        <div class="h-[16rem] bg-[#071F35] flex items-center justify-center">
+                            <img src="assets/img/thunder.webp" alt="Thunder" loading="lazy" class="h-full object-contain opacity-80" />
+                        </div> 
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Thunder XI</h3>
+                            <p class="text-gray-400 text-sm mb-4">
+                                • Founder  & Club manager, Thunder XI: a non-profit cricket club. <br>
+                                • Leading the club since 2020 <br>
+                                • Organized 7 cricket tournaments to motivate youths toward sports. <br>
+                                • Raise awareness about phone addiction, drugs, cigarette consumption among youth. <br>
+                                • Weekly matches at early morning to keep youths physically and mentally active.    <br>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 6: Dealivarly -->
+                    <div class="project-card card-hover bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden" data-category="web product">
+                        <div class="h-[16rem] bg-white flex items-center justify-center">
+                            <img src="assets/img/dealivarly.webp" alt="Thunder" loading="lazy" class="h-full object-contain opacity-80" />
+                            <div class="absolute top-4 left-4 px-3 py-1 bg-green-600/90 backdrop-blur-sm rounded-full text-xs font-semibold text-white z-10">
+                                In process
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Dealivarly</h3>
+                            <p class="text-gray-400 text-sm mb-4">
+                                • Founder, Deliverly (Launching Soon) - A revolutionary parcel delivery app connecting people with senders to make package delivery cheaper and seamless. <br>
+                                • This is a startup initiative aimed at transforming the delivery ecosystem. <br>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 7: AI News -->
+                    <div class="project-card card-hover bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden" data-category="web product">
+                        <div class="h-[16rem] bg-[#000101] flex items-center justify-center">
+                        <img src="assets/img/newsai.webp" loading="lazy" alt="Chart" class="h-full w-full object-cover opacity-80" />
+                    </div>
+
+
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">News AI</h3>
+                            <p class="text-gray-400 text text-sm mb-4">
+                                • Founder, News AI – The world’s first AI-powered social media news portal. <br>
+                                • Developed to deliver personalized, real-time news updates based on user interests. <br>
+                                • Integrated AI-driven content curation to make global information more accessible and engaging.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Project 8: Computer Instructor  -->
+                    <div class="project-card card-hover bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden" data-category="web product">
+                    <!-- Image Slider Container -->
+                    <div class="relative h-[16rem] bg-gradient-to-br from-green-600 to-teal-600 overflow-hidden group">
+                        <div class="slider-wrapper flex transition-transform duration-500 ease-in-out h-full" data-slider="ComputerInstructor" id="ComputerInstructor-slider">
+                            <!-- Slide 1 -->
+                            <div class="slider-slide2 min-w-full h-full">
+                                <img src="assets/img/ComputerInstructor.jpeg" 
+                                    loading="lazy"
+                                    alt="RISDY Community Outreach" 
+                                    class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="slider-slide2 min-w-full h-full">
+                                <img src="assets/img/ComputerInstructor2.jpeg" 
+                                    loading="lazy"
+                                    alt="Healthcare Support Initiative" 
+                                    class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Optional: Slide Indicators -->
+                        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                            <span class="slide-dot w-2 h-2 bg-white rounded-full transition-all duration-300" data-slide="0"></span>
+                            <span class="slide-dot w-2 h-2 bg-white/50 rounded-full transition-all duration-300" data-slide="1"></span>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">CEO & Computer Instructor</h3>
+                        <p class="text-gray-400 text text-sm mb-4">
+                            • Charfassion Institute of Information Technology (CIIT) – A government-approved training center under the Bangladesh Technical Education Board; taught 500+ underprivileged students computer and ICT skills.
+                        </p>
+                    </div>
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Olympiads (with badges) -->
+    <section id="experience" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-10">
+                <span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
+                    Achievements & Olympiads
+                </span>
+            </h2>
+
+            <div class="relative pl-12 md:pl-14">
+                <!-- vertical line -->
+                <div class="absolute left-5 md:left-6 top-0 bottom-0 w-px bg-gradient-to-b from-neon-blue via-neon-purple to-neon-pink/70"></div>
+
+                <!-- 1. Statice Health International Biology Olympiad 2024 -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                        <span class="relative flex h-8 w-8">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-purple/30 opacity-30"></span>
+                            <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-blue">
+                                <i class="fas fa-dna text-sm"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg md:text-xl font-semibold text-white">🏆 Statice Health International Biology Olympiad</h3>
+                            <span class="text-xs md:text-sm text-gray-400">2024</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-1">• 1st Position – Statice Health International Biology Olympiad 2024 (Higher Secondary Category)</p>
+                        <p class="text-gray-400 text-sm mt-1">• Competed among 10000+ students nationally.</p>
+                        <div class="mt-3 flex flex-wrap gap-2 items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                                    <i class="fas fa-trophy text-[10px]"></i> Olympiad
+                                </span>
+                            </div>
+                            <button onclick="openBiologyOlympiadModal()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10 hover:bg-neon-blue/20 transition-colors">
+                                <i class="fas fa-certificate text-[10px]"></i> View Certificate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biology Olympiad Certificate Modal -->
+                <div id="biologyOlympiadModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+                    <div class="relative bg-gray-900 rounded-xl border border-gray-700 p-4 max-w-6xl w-full max-h-[90vh] overflow-auto">
+
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-semibold text-white flex items-center gap-2">
+                            🧬 Biology Olympiad Certificate - 1st Position
+                        </h4>
+                        <button onclick="closeBiologyOlympiadModal()" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                        </div>
+
+                        <!-- Images -->
+                        <div class="flex flex-col lg:flex-row gap-4 items-center justify-center">
+                        <img src="assets/img/biology.webp" 
+                            alt="Statice Health International Biology Olympiad Certificate" 
+                            class="rounded-lg border border-gray-600 max-w-[90vw] lg:max-w-[45%] max-h-[70vh] object-contain">
+                        <img src="assets/img/biology2.webp" 
+                            alt="Another Biology Olympiad Certificate" 
+                            class="rounded-lg border border-gray-600 max-w-[90vw] lg:max-w-[45%] max-h-[70vh] object-contain">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 2 Duke of Edinburgh Award 2025 -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                        <span class="relative flex h-8 w-8">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue/30 opacity-30"></span>
+                            <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-purple">
+                                <i class="fas fa-award text-sm"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg md:text-xl font-semibold text-white flex items-center gap-2">
+                                🏆 The Duke of Edinburgh's International Award
+                            </h3>
+                            <span class="text-xs md:text-sm text-gray-400">2024</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-1">• After months of consistent activities and a volunteering tour, I was awarded a Gold Medalist at The Duke of Edinburgh's International award, 2024.</p>
+                        <div class="mt-3 flex flex-wrap gap-2 items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                                    <i class="fas fa-medal text-[10px]"></i> Award
+                                </span>
+                            </div>
+                            <button onclick="openCertificateModal()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10 hover:bg-neon-blue/20 transition-colors">
+                                <i class="fas fa-certificate text-[10px]"></i> View Certificate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                   <!-- Certificate Modal -->
+                <div id="certificateModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+                    <div class="relative bg-gray-900 rounded-xl border border-gray-700 p-4">
+                        
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-semibold text-white flex items-center gap-2">
+                            🏆 Duke of Edinburgh's Award Certificate
+                        </h4>
+                        <button onclick="closeCertificateModal()" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                        </div>
+                        
+                        <!-- Image -->
+                        <img id="certificateImage" 
+                            src="assets/img/duke.webp" 
+                            loading="lazy" 
+                            alt="Duke of Edinburgh Award Certificate" 
+                            class="rounded-lg border border-gray-600 max-w-[90vw] max-h-[90vh] object-contain">
+                        
+                    </div>
+                </div>
+
+                <!-- 3. International Youth Math Challenge 2024 -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                        <span class="relative flex h-8 w-8">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-purple/30 opacity-30"></span>
+                            <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-blue">
+                                <i class="fas fa-calculator text-sm"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg md:text-xl font-semibold text-white">🥈 International Youth Math Challenge</h3>
+                            <span class="text-xs md:text-sm text-gray-400">2024</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-1">• Silver Medalist (Top 8% of 10,000+ students from 98 countries)</p>
+                        <p class="text-gray-400 text-sm mt-1">• Excelled in research analysis and theoretical problem-solving.</p>
+                        <div class="mt-3 flex flex-wrap gap-2 items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                                    <i class="fas fa-bolt text-[10px]"></i> Challenge
+                                </span>
+                            </div>
+                            <button onclick="openMathChallengeModal()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10 hover:bg-neon-blue/20 transition-colors">
+                                <i class="fas fa-certificate text-[10px]"></i> View Certificate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Math Challenge Certificate Modal -->
+                <div id="mathChallengeModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+                    <div class="relative bg-gray-900 rounded-xl border border-gray-700 p-4">
+
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold text-white flex items-center gap-2">
+                                🧮 Math Challenge Certificate
+                            </h4>
+                            <button onclick="closeMathChallengeModal()" class="text-gray-400 hover:text-white transition-colors">
+                                <i class="fas fa-times text-xl"></i>
+                            </button>
+                        </div>
+
+                        <!-- Image -->
+                        <img id="mathChallengeImage" 
+                            src="assets/img/math-cer.webp" 
+                            loading="lazy"
+                            alt="International Youth Math Challenge Certificate"
+                            class="rounded-lg border border-gray-600 max-w-[90vw] max-h-[90vh] object-contain">
+
+                    </div>
+                </div>
+
+                <!-- 4. International Physics Brawl Competition 2024 -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                        <span class="relative flex h-8 w-8">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue/30 opacity-30"></span>
+                            <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-purple">
+                                <i class="fas fa-atom text-sm"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg md:text-xl font-semibold text-white">⚛️ International Physics Brawl Competition</h3>
+                            <span class="text-xs md:text-sm text-gray-400">2024</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-1">• Event & Team: Competed in the 3-hour Physics Brawl Online 2024 with Team Einstein's Elite.</p>
+                        <p class="text-gray-400 text-sm mt-1">• Achievement: Secured 215th place in Category O, competing against brilliant minds worldwide .</p>
+                        <p class="text-gray-400 text-sm mt-1">• Experience: A thrilling and unforgettable challenge.</p>
+
+                        <div class="mt-3 flex flex-wrap gap-2 items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                                    <i class="fas fa-trophy text-[10px]"></i> Competition
+                                </span>
+                            </div>
+                            <button onclick="openPhysicsBrawlModal()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10 hover:bg-neon-blue/20 transition-colors">
+                                <i class="fas fa-certificate text-[10px]"></i> View Certificate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Physics Brawl Certificate Modal -->
+                <div id="physicsBrawlModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+                    <div class="relative bg-gray-900 rounded-xl border border-gray-700 p-4">
+
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold text-white flex items-center gap-2">
+                                🔬 Physics Brawl Competition Certificate
+                            </h4>
+                            <button onclick="closePhysicsBrawlModal()" class="text-gray-400 hover:text-white transition-colors">
+                                <i class="fas fa-times text-xl"></i>
+                            </button>
+                        </div>
+
+                        <!-- Image -->
+                        <img id="physicsBrawlImage" 
+                            src="assets/img/physic.webp" 
+                            alt="International Physics Brawl Competition Certificate"
+                            class="rounded-lg border border-gray-600 max-w-[90vw] max-h-[90vh] object-contain">
+
+                    </div>
+                </div>
+
+                <!-- 5. National Robotics Quiz Carnival 2024 -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                        <span class="relative flex h-8 w-8">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-purple/30 opacity-30"></span>
+                            <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-blue">
+                                <i class="fas fa-robot text-sm"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg md:text-xl font-semibold text-white">🤖 National Robotics Quiz Carnival</h3>
+                            <span class="text-xs md:text-sm text-gray-400">2024</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-1">• Silver Medalist among thousands of participants Nationwide.</p>
+                        <div class="mt-3 flex flex-wrap gap-2 items-center justify-between">
+                            <div class="flex gap-2">
+                                <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                                    <i class="fas fa-question-circle text-[10px]"></i> Robotics Quiz
+                                </span>
+                            </div>
+                            <button onclick="openRoboticsQuizModal()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10 hover:bg-neon-blue/20 transition-colors">
+                                <i class="fas fa-certificate text-[10px]"></i> View Certificate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Robotics Quiz Certificate Modal -->
+                <div id="roboticsQuizModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+                    <div class="relative bg-gray-900 rounded-xl border border-gray-700 p-4">
+
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold text-white flex items-center gap-2">
+                                🏅 Robotics Quiz Certificate
+                            </h4>
+                            <button onclick="closeRoboticsQuizModal()" class="text-gray-400 hover:text-white transition-colors">
+                                <i class="fas fa-times text-xl"></i>
+                            </button>
+                        </div>
+
+                        <!-- Image -->
+                        <img id="roboticsQuizImage" 
+                            src="assets/img/robotic.webp" 
+                            loading="lazy"
+                            alt="National Robotics Quiz Carnival Certificate"
+                            class="rounded-lg border border-gray-600 max-w-[90vw] max-h-[90vh] object-contain">
+
+                    </div>
+                </div>
+
+                <!-- 6. International Economics Olympiad x Winter Challenge -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                    <span class="relative flex h-8 w-8">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue/30 opacity-30"></span>
+                        <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-purple">
+                        <i class="fas fa-star text-sm"></i>
+                        </span>
+                    </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-lg md:text-xl font-semibold text-white">⛷️ International Economics Olympiad<span class="text-sm md:text-base">x</span> Winter Challenge </h3>
+                        <span class="text-xs md:text-sm text-gray-400">2024</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-1">• Advanced to the Pre-Final Round among thousands of international students.</p>
+                    <p class="text-gray-400 text-sm mt-1">• Competed in the Duo Category as part of a squad, showcasing teamwork and analytical skills.</p>
+
+                    <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                        <i class="fas fa-bolt text-[10px]"></i> Challenge
+                        </span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- 7. International Astronomy and Astrophysics Competition -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                    <span class="relative flex h-8 w-8">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue/30 opacity-30"></span>
+                        <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-purple">
+                        <i class="fas fa-star text-sm"></i>
+                        </span>
+                    </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-lg md:text-xl font-semibold text-white">🔭 International Astronomy and Astrophysics Competition</h3>
+                        <span class="text-xs md:text-sm text-gray-400">2024</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-1">• Qualified for IAAC; could not attend pre-final stage due to family responsibilities.</p>
+
+                    <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                        <i class="fas fa-bolt text-[10px]"></i> Competition
+                        </span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- 8. Independence Day Essay Writing Competition 2023 -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                    <span class="relative flex h-8 w-8">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue/30 opacity-30"></span>
+                        <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-purple">
+                        <i class="fas fa-star text-sm"></i>
+                        </span>
+                    </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-lg md:text-xl font-semibold text-white">️📝 Independence Day Essay Writing Competition </h3>
+                        <span class="text-xs md:text-sm text-gray-400">2022</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-1">• 1st Prize.</p>
+                    <p class="text-gray-400 text-sm mt-1">• Recognized for creativity, clarity of thought, analytical skills, and relevance to the theme; Issued by Ministry of Education in association with Shashibhussion High School.</p>
+
+                    <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                        <i class="fas fa-bolt text-[10px]"></i> Competition
+                        </span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- 9. Bangladesh wildlife olympiad 2023 -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                    <span class="relative flex h-8 w-8">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue/30 opacity-30"></span>
+                        <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-purple">
+                        <i class="fas fa-star text-sm"></i>
+                        </span>
+                    </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-lg md:text-xl font-semibold text-white">🌿 Bangladesh wildlife olympiad 2022</h3>
+                        <span class="text-xs md:text-sm text-gray-400">2022</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-1">• District level quiz winner.</p>
+                    <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                        <i class="fas fa-bolt text-[10px]"></i> Challenge
+                        </span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- 11. Perfect Attendance and Obedience Award -->
+                <div class="relative pb-10 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                    <span class="relative flex h-8 w-8">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue/30 opacity-30"></span>
+                        <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-purple">
+                        <i class="fas fa-star text-sm"></i>
+                        </span>
+                    </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                    <div class="flex items-center justify-between gap-4">
+                        <h3 class="text-lg md:text-xl font-semibold text-white">✅ Perfect Attendance and Obedience Award,<br>  <span class="pr-10"></span>- Issued by Shashibhussion high school. </h3>
+                        <span class="text-xs md:text-sm text-gray-400">2022</span>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-1">• Recognized for consistent attendance and disciplined behavior.</p>
+                    <div class="mt-2 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                        <i class="fas fa-bolt text-[10px]"></i> Competition
+                        </span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- 12. Oral Storytelling Award -->
+                <div class="relative pb-0 group">
+                    <div class="absolute -left-1.5 md:-left-1 top-1">
+                        <span class="relative flex h-8 w-8">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-blue/30 opacity-30"></span>
+                            <span class="relative inline-flex items-center justify-center h-8 w-8 rounded-full border border-neon-purple/50 bg-gray-900 text-neon-purple">
+                            <i class="fas fa-star text-sm"></i>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-neon-purple/50 transition-colors rounded-xl p-4">
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="text-lg md:text-xl font-semibold text-white">🗣️ Oral Storytelling Award</h3>
+                            <span class="text-xs md:text-sm text-gray-400">2022</span>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-1">• <span class="text-white font-semibold">Awarded by Shashibhussion High School</span> on 17 March, National Children’s Day, Bangladesh, for creativity and excellence in storytelling.</p>
+                        <div class="mt-2 flex flex-wrap gap-2">
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] md:text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                            <i class="fas fa-bolt text-[10px]"></i> Challenge
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Internship & Professional Development -->
+    <section id="professional-development" class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">
+        <span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
+            Internship & Professional Development
+        </span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+        <!-- MS Office Applications -->
+        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 neon-glow">
+            <div class="flex items-start gap-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-neon-blue to-neon-purple text-white/90 shadow-lg">
+                    <i class="fas fa-laptop text-xl"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <h3 class="text-xl font-semibold text-white">💻 MS Office Applications</h3>
+                        <button onclick="openMSOfficeModal()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10 hover:bg-neon-purple/20 transition-colors">
+                            <i class="fas fa-certificate text-[10px]"></i> View Certificate
+                        </button>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-1">National Skill Standard Basic Course (6 months / 360 hours) – Grade: A+</p>
+                    <p class="text-gray-400 text-sm mt-1">• Trained in MS Word, Excel, PowerPoint, Access.</p>
+                    <p class="text-gray-400 text-sm mt-1">• BTEB-certified, secured A+ in final assessment.</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10">
+                            <i class="fas fa-certificate text-[10px]"></i> Professional Development
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MS Office Certificate Modal -->
+        <div id="msOfficeModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+            <div class="relative bg-gray-900 rounded-xl border border-gray-700 p-4">
+                
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-lg font-semibold text-white flex items-center gap-2">
+                        📋 MS Office Applications Certificate - Grade A+
+                    </h4>
+                    <button onclick="closeMSOfficeModal()" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <!-- Image -->
+                <img id="msOfficeImage" 
+                    src="assets/img/360hour.webp" 
+                    loading="lazy" 
+                    alt="MS Office Applications Certificate" 
+                    class="rounded-lg border border-gray-600 max-w-[90vw] max-h-[90vh] object-contain">
+                
+            </div>
+        </div>
+
+
+        <!-- Research Internship -->
+        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 neon-glow">
+            <div class="flex items-start gap-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink text-white/90 shadow-lg">
+                    <i class="fas fa-flask text-xl"></i>
+                </div>
+                <div class="min-w-0 flex-1">
+                    <div class="flex items-center justify-between gap-4 mb-2">
+                        <h3 class="text-xl font-semibold text-white">🔬 Scientific Research BD – Research Intern (Unpaid, 6 months)</h3>
+                        <button onclick="openResearchInternModal()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10 hover:bg-neon-purple/20 transition-colors">
+                            <i class="fas fa-certificate text-[10px]"></i> View Certificate
+                        </button>
+                    </div>
+                    <p class="text-gray-400 text-sm mt-1">• Contributed to a key research project with measurable community impact.</p>
+                    <p class="text-gray-400 text-sm mt-1">• Demonstrated initiative, creativity, and strong work ethic.</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                            <i class="fas fa-briefcase text-[10px]"></i> Internship
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Research Intern Certificate Modal -->
+       <div id="researchInternModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+            <div class="relative bg-gray-900 rounded-xl border border-gray-700 p-4">
+
+                <!-- Header -->
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-lg font-semibold text-white flex items-center gap-2">
+                        📋 Research Internship Certificate - Scientific Research BD
+                    </h4>
+                    <button onclick="closeResearchInternModal()" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Image -->
+                <img id="researchInternImage" 
+                    src="assets/img/research.webp"
+                    loading="lazy"
+                    alt="Scientific Research BD Internship Certificate"
+                    class="rounded-lg border border-gray-600 max-w-[90vw] max-h-[90vh] object-contain">
+
+            </div>
+        </div>
+
+
+        <!-- Research Internship 2 -->
+        <!-- <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 neon-glow">
+            <div class="flex items-start gap-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink text-white/90 shadow-lg">
+                    <i class="fas fa-flask text-xl"></i>
+                </div>
+                <div class="min-w-0">
+                    <h3 class="text-xl font-semibold text-white">Research Assistance – Brother’s Research Project</h3>
+                    <p class="text-gray-400 text-sm mt-1">• Assisted with calculations, graph creation, and referencing.</p>
+                    <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                            <i class="fas fa-briefcase text-[10px]"></i> Internship
+                        </span>
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">Assisted with calculations</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">Graph Creation</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">Referencing</span>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        </div>
+    </div>
+    </section>
+
+    <!-- Volunteering & Leadership -->
+    <section id="volunteering-leadership" class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">
+        <span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
+            Volunteering & Leadership
+        </span>
+        </h2>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+        <!-- 1. Student Government Senator -->
+        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300">
+            <div class="flex items-start gap-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-neon-blue to-neon-purple text-white/90 shadow-lg">
+                    <i class="fas fa-landmark text-xl"></i>
+                </div>
+                <div class="min-w-0">
+                    <h3 class="text-xl font-semibold text-white">Student Government Leadership (Class 9 & 10)</h3>
+                    <p class="text-gray-400 text-sm mt-1">• Chairman (1/887 students): Led the entire student council and organized school-wide events.</p>
+                    <p class="text-gray-400 text-sm mt-1">• Senator (1/170 students) : Represented class peers and contributed to decision-making.</p>
+                    <p class="text-gray-400 text-sm mt-1">• Treasurer:  budget and financial planning for student activities.</p>
+
+                    <!-- <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10">
+                            <i class="fas fa-gavel text-[10px]"></i> Leadership
+                        </span>
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">Student Government</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Vice President of Science Club -->
+        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300">
+            <div class="flex items-start gap-4">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink text-white/90 shadow-lg">
+                <i class="fas fa-flask text-xl"></i>
+            </div>
+            <div class="min-w-0">
+                <h3 class="text-xl font-semibold text-white">Vice President, Science Club</h3>
+                <p class="text-gray-400 text-sm mt-4">• Served as Vice President of the Science Club, leading multiple science projects.</p>
+                <p class="text-gray-400 text-sm mt-1">• - Successfully guided the club to secure 2nd place at the district-level science competitions twice.</p>
+                <!-- <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                        <i class="fas fa-user-tie text-[10px]"></i> Leadership
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">STEM</span>
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">Science Club</span>
+                </div> -->
+            </div>
+            </div>
+        </div>
+
+        <!-- 3. Volunteer, Red Crescent Society -->
+        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300">
+            <div class="flex items-start gap-4">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 text-white/90 shadow-lg">
+                <i class="fas fa-hand-holding-heart text-xl"></i>
+            </div>
+            <div class="min-w-0">
+                <h3 class="text-xl font-semibold text-white">Volunteer, Red Crescent Society</h3>
+                <p class="text-gray-400 text-sm mt-4">• Red Crescent Society Aid Training – Trained in first aid, disaster response, and community support.</p>
+
+                <!-- <div class="mt-3 flex flex-wrap gap-2">
+                    <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-rose-400/30 text-rose-300 bg-rose-400/10">
+                        <i class="fas fa-heart text-[10px]"></i> Humanitarian
+                    </span>
+                    <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">Community Service</span>
+                </div> -->
+            </div>
+            </div>
+        </div>
+
+        <!-- 4. Captain, High School & College Cricket Club -->
+        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300">
+            <div class="flex items-start gap-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-500 text-white/90 shadow-lg">
+                    <i class="fas fa-trophy text-xl"></i>
+                </div>
+                <div class="min-w-0">
+                    <h3 class="text-xl font-semibold text-white">Captain, High School & College Cricket Club</h3>
+                    <p class="text-gray-400 text-sm mt-4">• Promoted the spirit of cricket on my school campus by organizing weekly matches, monthly tournaments, and international match screenings.</p>
+
+                    <!-- <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-emerald-400/30 text-emerald-300 bg-emerald-400/10">
+                            <i class="fas fa-users text-[10px]"></i> Team Lead
+                        </span>
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">Sports</span>
+                        <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">Cricket Club</span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Scientific Research Volunteer Representative, Bangladesh -->
+        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 md:col-span-2 xl:col-span-1">
+            <div class="flex items-start gap-4">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-neon-blue to-neon-purple text-white/90 shadow-lg">
+                <i class="fas fa-bullhorn text-xl"></i>
+            </div>
+            <div class="min-w-0">
+                <h3 class="text-xl font-semibold text-white">Scientific Research BD - volunteer representative</h3>
+                <p class="text-gray-400 text-sm mt-4">• Represented research organizations as a volunteer, fostering collaboration and engagement with students and the community.</p>
+               
+            </div>
+            </div>
+        </div>
+
+                <!-- 6. -->
+        <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300">
+            <div class="flex items-start gap-4">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-rose-500 to-red-600 text-white/90 shadow-lg">
+                <i class="fas fa-hand-holding-heart text-xl"></i>
+            </div>
+            <div class="min-w-0">
+                <h3 class="text-xl font-semibold text-white">Institute events</h3>
+                <p class="text-gray-400 text-sm mt-4">• Regularly served in interim management roles for workshops, trainings, and institutional events.</p>
+
+                
+            </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <!-- Research Papers & Publications -->
+    <section id="publications" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">
+            <span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
+                Research Papers & Publications
+            </span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Conference Paper -->
+                <article class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300">
+                    <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-neon-blue to-neon-purple text-white/90 shadow-lg">
+                        <i class="fas fa-microphone text-xl"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h3 class="text-xl font-semibold text-white">Conference Paper</h3>
+                        <p class="text-gray-400 text-sm mt-1">• Submitted a paper to the 28th International Conference on Computer and Information Technology (ICCIT) 2025, organized by IEEE Bangladesh Section, to be held on 19–21 December at Long Beach Hotel, Cox’s Bazar, Bangladesh.</p>
+
+                        <!-- <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-neon-blue/30 text-neon-blue bg-neon-blue/10">
+                            <i class="fas fa-chalkboard-teacher text-[10px]"></i> Conference
+                        </span>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-emerald-400/30 text-emerald-300 bg-emerald-400/10">
+                            <i class="fas fa-lock-open text-[10px]"></i> Open Access
+                        </span>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">
+                            <i class="fas fa-user-edit text-[10px]"></i> Peer-reviewed
+                        </span>
+                        </div> -->
+
+                        <!-- <div class="mt-4 flex flex-wrap gap-3">
+                        <a href="assets/pdf/GpApjsa.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-neon-blue to-neon-purple text-white hover:opacity-90">
+                            <i class="fas fa-file-pdf"></i> Submitted
+                        </a>
+                        </div> -->
+                    </div>
+                    </div>
+                </article>
+
+                <!-- Review Paper -->
+                <article class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300">
+                    <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-neon-purple to-neon-pink text-white/90 shadow-lg">
+                        <i class="fas fa-book-open text-xl"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <h3 class="text-xl font-semibold text-white">Research Paper</h3>
+                        <p class="text-gray-400 text-sm mt-1">• Working on a journal paper as a co-author.</p>
+
+                        <!-- <div class="mt-3 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-neon-purple/30 text-neon-purple bg-neon-purple/10">
+                            <i class="fas fa-book text-[10px]"></i> Review
+                        </span>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-emerald-400/30 text-emerald-300 bg-emerald-400/10">
+                            <i class="fas fa-lock-open text-[10px]"></i> Open Access
+                        </span>
+                        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">
+                            <i class="fas fa-user-edit text-[10px]"></i> Peer-reviewed
+                        </span>
+                        </div> -->
+
+                        <!-- <div class="mt-4 flex flex-wrap gap-3">
+                        <a href="review-paper.pdf" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-neon-purple to-neon-pink text-white hover:opacity-90">
+                            <i class="fas fa-file-pdf"></i> Read PDF
+                        </a>
+                        </div> -->
+                    </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Ambassador Roles -->
+    <section id="student-ambassador-roles" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8">
+            <span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
+                Student Ambassador Roles
+            </span>
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+            <!-- Bangladesh English Olympiad -->
+            <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-neon-blue to-neon-purple text-white/90 shadow-lg">
+                    <i class="fas fa-language text-xl"></i>
+                </div>
+                <div class="min-w-0">
+                    <h3 class="text-xl font-semibold text-white">Student Ambassador, Bangladesh English Olympiad</h3>
+                    <p class="text-gray-400 text-sm mt-4 mb-4">• Represented Bangladesh English Olympiad as District Ambassador in Bhola, organizing events, liaising with schools, and increasing student engagement.</p>
+                    
+                </div>
+                </div>
+            </div>
+
+            <!-- Microsoft Learn Student Ambassador -->
+            <div class="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all duration-300">
+                <div class="flex items-start gap-4">
+                    <div class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 text-white/90 shadow-lg">
+                        <i class="fa-brands fa-microsoft text-xl"></i>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <div class="flex items-center justify-between gap-4 mb-3">
+                            <h3 class="text-xl font-semibold text-white">
+                                🎓 Microsoft Learn Student Ambassador      
+                               
+                            </h3>
+                             <span class="relative inline-block">
+                                <span class="text-cyan-400 text-2xl">⭐</span>
+                                <span class="absolute -top-4 left-1/2 -translate-x-1/2 text-cyan-400 text-sm font-bold">
+                                ALPHA
+                                </span>
+                            </span>
+                            <button onclick="openMicrosoftAmbassadorModal()" class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium border border-sky-400/30 text-sky-300 bg-sky-400/10 hover:bg-sky-400/20 transition-colors">
+                                <i class="fas fa-certificate text-[10px]"></i> View Certificate
+                            </button>
+                        </div>
+                        <p class="text-gray-400 text-sm mt-1">Hosted workshops and events on Microsoft technologies, mentored students, and collaborated with peers to support local tech communities and promote innovation. <br>
+                              Key Responsibilities: <br>
+                            • Conducted tech workshops and events. <br>
+                            • Mentored students in projects and learning. <br>
+                            • Collaborated on initiatives to foster tech skills.
+                        </p>
+
+                        <!-- <div class="mt-3 flex flex-wrap gap-2">
+                            <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border border-sky-400/30 text-sky-300 bg-sky-400/10">
+                                <i class="fas fa-id-badge text-[10px]"></i> Ambassador
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">
+                                Tech Community
+                            </span>
+                            <span class="px-2.5 py-0.5 rounded-full text-xs font-medium border border-gray-600 text-gray-300">
+                                Workshops & Events
+                            </span>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Microsoft Ambassador Certificate Modal -->
+            <div id="microsoftAmbassadorModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+                <div class="relative bg-gray-900 rounded-xl border border-gray-700 p-4">
+                    
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-semibold text-white flex items-center gap-2">
+                            💼 Microsoft Learn Student Ambassador Certificate
+                        </h4>
+                        <button onclick="closeMicrosoftAmbassadorModal()" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Image -->
+                    <img id="microsoftAmbassadorImage" 
+                        src="assets/img/microsoft.webp" 
+                        loading="lazy"
+                        alt="Microsoft Learn Student Ambassador Certificate"
+                        class="rounded-lg border border-gray-600 max-w-[90vw] max-h-[90vh] object-contain">
+                    
+                </div>
+            </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Book Section -->
+    <section id="self-learning" class="py-16 bg-gray-800/30">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">
+                <span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
+                    Self-Learning & Personal Development
+                </span>
+            </h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+                Completed several impactful books (Rich Dad Poor Dad, Atomic Habits, The Alchemist, etc.), developing financial understanding, self-discipline, and critical thinking.
+            </p>
+
+            <!-- Books Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+                
+                <!-- Book 1: Zero to One -->
+                <div class="book-card group" data-book-category="business technology">
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 hover:scale-105">
+                        <div class="relative h-64 bg-gradient-to-br from-blue-600 to-purple-600 overflow-hidden">
+                            <img src="assets/img/book5.webp"
+                                loading="lazy" 
+                                alt="Zero to One" 
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute top-2 right-2 px-2 py-1 bg-green-500/90 rounded-full text-xs font-semibold text-white">
+                                Completed
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-1">The 48 Laws of Power</h3>
+                            <p class="text-sm text-gray-400 mb-2">Robert Greene</p>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-gray-500">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 2: Atomic Habits -->
+                <div class="book-card group" data-book-category="personal">
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 hover:scale-105">
+                        <div class="relative h-64 bg-gradient-to-br from-yellow-500 to-orange-600 overflow-hidden">
+                            <img src="assets/img/book3.webp" 
+                                loading="lazy"
+                                alt="Atomic Habits" 
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute top-2 right-2 px-2 py-1 bg-green-500/90 rounded-full text-xs font-semibold text-white">
+                                Completed
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-1">Atomic Habits</h3>
+                            <p class="text-sm text-gray-400 mb-2">James Clear</p>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-gray-500">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 3: The Lean Startup -->
+                <div class="book-card group" data-book-category="business technology">
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 hover:scale-105">
+                        <div class="relative h-64 bg-gradient-to-br from-red-500 to-pink-600 overflow-hidden">
+                            <img src="assets/img/book4.webp" 
+                                loading="lazy"
+                                alt="The Lean Startup" 
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute top-2 right-2 px-2 py-1 bg-green-500/90 rounded-full text-xs font-semibold text-white">
+                                Completed
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-1">Discipline Is Destiny: The Power of Self-Control</h3>
+                            <p class="text-sm text-gray-400 mb-2">Ryan Holiday</p>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-gray-500">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 4: -->
+                <div class="book-card group" data-book-category="science">
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 hover:scale-105">
+                        <div class="relative h-64 bg-gradient-to-br from-green-500 to-teal-600 overflow-hidden">
+                            <img src="assets/img/book6.webp"
+                                loading="lazy"
+                                alt="The Alchemist" 
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute top-2 right-2 px-2 py-1 bg-green-500/90 rounded-full text-xs font-semibold text-white">
+                                Completed
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-1">The Alchemist</h3>
+                            <p class="text-sm text-gray-400 mb-2">Paulo Coelho</p>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-gray-500">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 5 -->
+                <div class="book-card group" data-book-category="personal technology">
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 hover:scale-105">
+                        <div class="relative h-64 bg-gradient-to-br from-indigo-500 to-purple-600 overflow-hidden">
+                            <img src="assets/img/book7.webp"
+                                loading="lazy" 
+                                alt="Mind Your Business" 
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute top-2 right-2 px-2 py-1 bg-green-500/90 rounded-full text-xs font-semibold text-white">
+                                Completed
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-1">Mind Your Business</h3>
+                            <p class="text-sm text-gray-400 mb-2">Walid Nasserdeen</p>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-gray-500">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Book 7: -->
+                <div class="book-card group" data-book-category="technology">
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 hover:scale-105">
+                        <div class="relative h-64 bg-gradient-to-br from-blue-500 to-cyan-600 overflow-hidden">
+                            <img src="assets/img/book2.webp" 
+                                loading="lazy"
+                                alt="Clean Code" 
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute top-2 right-2 px-2 py-1 bg-green-500/90 rounded-full text-xs font-semibold text-white">
+                                Completed
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-1">The Power of a positive Mindset</h3>
+                            <p class="text-sm text-gray-400 mb-2">Json Wolbers</p>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-gray-500">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book 8: Rich Dad Poor Dad -->
+                <div class="book-card group" data-book-category="business personal">
+                    <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl overflow-hidden border border-gray-700 hover:border-neon-purple/50 transition-all duration-300 hover:scale-105">
+                        <div class="relative h-64 bg-gradient-to-br from-purple-500 to-pink-600 overflow-hidden">
+                            <img src="assets/img/book1.webp" 
+                                loading="lazy"
+                                alt="Rich Dad Poor Dad" 
+                                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                            <div class="absolute top-2 right-2 px-2 py-1 bg-green-500/90 rounded-full text-xs font-semibold text-white">
+                                Completed
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="text-lg font-semibold text-white mb-1">Rich Dad & Poor Dad</h3>
+                            <p class="text-sm text-gray-400 mb-2">Robert Kiyosaki</p>
+                            <div class="flex items-center gap-2 mb-3">
+                                <div class="flex text-yellow-400">
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                    <i class="fas fa-star text-xs"></i>
+                                </div>
+                                <span class="text-xs text-gray-500">5.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Test Scores Section -->
+    <!-- <section id="test-scores" class="py-16 bg-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">
+                <span class="bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
+                    Test Scores
+                </span>
+            </h2>
+            <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">
+                Standardized test results for academic proficiency
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                
+                <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-neon-blue/50 transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-700 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-language text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-2">Duolingo</h3>
+                            
+                            <div class="mb-4">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-3xl font-bold text-green-400">00</span>
+                                    <span class="text-gray-400 text-sm">/ 160</span>
+                                </div>
+                                <p class="text-gray-500 text-xs mt-1">Expert Proficiency (C0)</p>
+                            </div>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Speaking</span>
+                                    <span class="text-gray-300">00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Listening</span>
+                                    <span class="text-gray-300">00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Writing</span>
+                                    <span class="text-gray-300">00</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Reading</span>
+                                    <span class="text-gray-300">00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4 pt-4 border-t border-gray-700">
+                                <p class="text-xs text-gray-500">
+                                    <i class="far fa-calendar mr-1"></i>
+                                    Test Date: October 2024
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-neon-purple/50 transition-all">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-graduation-cap text-white text-xl"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-xl font-bold text-white mb-2">Digital SAT (DSAT)</h3>
+                            
+                            <div class="mb-4">
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-3xl font-bold text-purple-400">0000</span>
+                                    <span class="text-gray-400 text-sm">/ 1600</span>
+                                </div>
+                                <p class="text-gray-500 text-xs mt-1">00th Percentile</p>
+                            </div>
+                            
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Math</span>
+                                    <span class="text-gray-300">00 / 800</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-400">Reading & Writing</span>
+                                    <span class="text-gray-300">00 / 800</span>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 pt-4 border-t border-gray-700">
+                                <p class="text-xs text-gray-500">
+                                    <i class="far fa-calendar mr-1"></i>
+                                    Test Date: November 2024
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="reveal">
+                <h2 class="text-4xl font-bold text-center mb-8 text-white">Taking initiative and creating change is my way forward</h2>
+                <a href="mailto:marufurrahmanxyz@gmail.com" class="block text-center group">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                        <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+                            <i class="fa-regular fa-envelope"></i> E-Mail
+                        </span>
+                    </h2>
+                    <p class="text-lg md:text-xl font-medium text-gray-200 group-hover:text-cyan-400 transition-colors duration-300">
+                        marufurrahmanxyz@gmail.com
+                    </p>
+                </a>
+                
+                
+               <!--<div class="max-w-2xl mx-auto">
+                     <form id="contact-form" class="bg-gray-800/50 backdrop-blur-sm rounded-xl p-8">
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-400 mb-2">Name</label>
+                                <input type="text" id="name" name="name" required 
+                                    class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-neon-blue focus:outline-none transition-colors"
+                                    placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-400 mb-2">Email</label>
+                                <input type="email" id="email" name="email" required 
+                                    class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-neon-blue focus:outline-none transition-colors"
+                                    placeholder="your@email.com">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-400 mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required 
+                                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-neon-blue focus:outline-none transition-colors"
+                                placeholder="Project Discussion">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-400 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required 
+                                class="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:border-neon-blue focus:outline-none transition-colors resize-none"
+                                placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                            class="w-full px-8 py-3 bg-gradient-to-r from-neon-blue to-neon-purple rounded-lg font-semibold hover:scale-105 transition-transform">
+                            Send Message
+                        </button>
+                    </form> -->
+                    
+                    <!-- Contact Info -->
+                    <!-- <div class="mt-12 text-center">
+                        <p class="text-gray-400 mb-4">Or reach out directly:</p>
+                        <div class="flex justify-center space-x-6">
+                            <a href="mailto:mahadi@example.com" class="text-neon-blue hover:text-neon-purple transition-colors">
+                                <i class="fas fa-envelope text-2xl"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" class="text-neon-blue hover:text-neon-purple transition-colors">
+                                <i class="fab fa-linkedin text-2xl"></i>
+                            </a>
+                            <a href="https://github.com" target="_blank" class="text-neon-blue hover:text-neon-purple transition-colors">
+                                <i class="fab fa-github text-2xl"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" class="text-neon-blue hover:text-neon-purple transition-colors">
+                                <i class="fab fa-twitter text-2xl"></i>
+                            </a>
+                        </div> 
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <p class="text-gray-500">
+                    © 2025 Marufur Rahman. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+
+        class AutoSlider {
+            constructor(sliderId, interval = 3000) {
+                this.slider = document.getElementById(sliderId);
+                if (!this.slider) return;
+                
+                this.slides = this.slider.querySelectorAll('.slider-slide2');
+                this.dots = this.slider.parentElement.querySelectorAll('.slide-dot');
+                this.currentSlide = 0;
+                this.totalSlides = this.slides.length;
+                this.interval = interval;
+                this.autoSlideInterval = null;
+                
+                this.init();
+            }
+            
+            init() {
+                this.startAutoSlide();
+                this.addEventListeners();
+            }
+            
+            updateSlider() {
+                this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+                this.slider.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+                this.updateDots();
+            }
+            
+            updateDots() {
+                if (this.dots.length === 0) return;
+                
+                this.dots.forEach((dot, index) => {
+                    dot.classList.toggle('bg-white', index === this.currentSlide);
+                    dot.classList.toggle('bg-white/50', index !== this.currentSlide);
+                });
+            }
+            
+            startAutoSlide() {
+                this.autoSlideInterval = setInterval(() => this.updateSlider(), this.interval);
+            }
+            
+            stopAutoSlide() {
+                if (this.autoSlideInterval) {
+                    clearInterval(this.autoSlideInterval);
+                }
+            }
+            
+            addEventListeners() {
+                // Pause on hover
+                const container = this.slider.parentElement;
+                container.addEventListener('mouseenter', () => this.stopAutoSlide());
+                container.addEventListener('mouseleave', () => this.startAutoSlide());
+                
+                // Dot navigation
+                this.dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        this.currentSlide = index;
+                        this.slider.style.transform = `translateX(-${this.currentSlide * 100}%)`;
+                        this.updateDots();
+                    });
+                });
+            }
+        }
+
+        // Initialize the slider
+        document.addEventListener('DOMContentLoaded', function() {
+            new AutoSlider('ComputerInstructor-slider', 4000); // 4000ms = 4 seconds
+        });
+                
+        // Simple counter animation for test scores
+        function animateTestScores() {
+            const scores = [
+                { element: 'duolingo-score', target: 145, duration: 1500 },
+                { element: 'dsat-score', target: 1520, duration: 1500 }
+            ];
+            
+            scores.forEach(score => {
+                const element = document.getElementById(score.element);
+                if (!element) return;
+                
+                let current = 0;
+                const increment = score.target / (score.duration / 16);
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= score.target) {
+                        current = score.target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current);
+                }, 16);
+            });
+        }
+
+        // Trigger animation when section is visible
+        const testSection = document.querySelector('#test-scores');
+        if (testSection) {
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateTestScores();
+                    observer.disconnect();
+                }
+            });
+            observer.observe(testSection);
+        }
+
+
+
+        // loading screen
+        window.addEventListener('load', function() {
+            var loader = document.getElementById('loading-screen');
+            if(loader) loader.style.display = 'none';
+        });
+
+        // Modal Functions ResearchIntern
+        function openResearchInternModal() {
+            const modal = document.getElementById('researchInternModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeResearchInternModal() {
+            const modal = document.getElementById('researchInternModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('researchInternModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeResearchInternModal();
+            }
+        });
+
+        // Updated global escape key handler for all modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCertificateModal(); // Duke of Edinburgh
+                closeBiologyOlympiadModal(); // Biology Olympiad
+                closeMathChallengeModal(); // Math Challenge
+                closeMSOfficeModal(); // MS Office
+                closeRoboticsQuizModal(); // Robotics Quiz
+                closePhysicsBrawlModal(); // Physics Brawl
+                closeMicrosoftAmbassadorModal(); // Microsoft Ambassador
+                closeResearchInternModal(); // Research Intern
+            }
+        });
+
+
+
+
+        function openMicrosoftAmbassadorModal() {
+            const modal = document.getElementById('microsoftAmbassadorModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMicrosoftAmbassadorModal() {
+            const modal = document.getElementById('microsoftAmbassadorModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('microsoftAmbassadorModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMicrosoftAmbassadorModal();
+            }
+        });
+
+        // Updated global escape key handler for all modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCertificateModal(); // Duke of Edinburgh
+                closeBiologyOlympiadModal(); // Biology Olympiad
+                closeMathChallengeModal(); // Math Challenge
+                closeMSOfficeModal(); // MS Office
+                closeRoboticsQuizModal(); // Robotics Quiz
+                closePhysicsBrawlModal(); // Physics Brawl
+                closeMicrosoftAmbassadorModal(); // Microsoft Ambassador
+            }
+        });
+
+
+        function openPhysicsBrawlModal() {
+            const modal = document.getElementById('physicsBrawlModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePhysicsBrawlModal() {
+            const modal = document.getElementById('physicsBrawlModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('physicsBrawlModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closePhysicsBrawlModal();
+            }
+        });
+
+        // Updated global escape key handler for all modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCertificateModal(); // Duke of Edinburgh
+                closeBiologyOlympiadModal(); // Biology Olympiad
+                closeMathChallengeModal(); // Math Challenge
+                closeMSOfficeModal(); // MS Office
+                closeRoboticsQuizModal(); // Robotics Quiz
+                closePhysicsBrawlModal(); // Physics Brawl
+            }
+        });
+
+
+
+        function openRoboticsQuizModal() {
+            const modal = document.getElementById('roboticsQuizModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRoboticsQuizModal() {
+            const modal = document.getElementById('roboticsQuizModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('roboticsQuizModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeRoboticsQuizModal();
+            }
+        });
+
+        // Update the global escape key handler to include all modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCertificateModal(); // Duke of Edinburgh
+                closeBiologyOlympiadModal(); // Biology Olympiad
+                closeMathChallengeModal(); // Math Challenge
+                closeMSOfficeModal(); // MS Office
+                closeRoboticsQuizModal(); // Robotics Quiz
+            }
+        });
+
+
+        function openMSOfficeModal() {
+            const modal = document.getElementById('msOfficeModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMSOfficeModal() {
+            const modal = document.getElementById('msOfficeModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('msOfficeModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMSOfficeModal();
+            }
+        });
+
+        // Update the global escape key handler to include all modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCertificateModal(); // Duke of Edinburgh
+                closeBiologyOlympiadModal(); // Biology Olympiad
+                closeMathChallengeModal(); // Math Challenge
+                closeMSOfficeModal(); // MS Office
+            }
+        });
+
+
+
+        function openMathChallengeModal() {
+            const modal = document.getElementById('mathChallengeModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMathChallengeModal() {
+            const modal = document.getElementById('mathChallengeModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('mathChallengeModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMathChallengeModal();
+            }
+        });
+
+        // Update the global escape key handler to include all modals
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeCertificateModal(); // Duke of Edinburgh
+                closeBiologyOlympiadModal(); // Biology Olympiad
+                closeMathChallengeModal(); // Math Challenge
+            }
+        });
+
+
+        // 1. Certificate Modal Functionality
+        function openBiologyOlympiadModal() {
+            const modal = document.getElementById('biologyOlympiadModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBiologyOlympiadModal() {
+            const modal = document.getElementById('biologyOlympiadModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('biologyOlympiadModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBiologyOlympiadModal();
+            }
+        });
+
+        // Update the global escape key handler to include this modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBiologyOlympiadModal();
+                // Add other modal close functions here if you have more
+            }
+        });
+
+
+        // 2. dude
+        // Certificate Modal Functionality
+        function openCertificateModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCertificateModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('certificateModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeCertificateModal();
+            }
+        });
+
+        // Math Challenge Modal Functionality
+        function openMathChallengeModal() {
+            const modal = document.getElementById('mathChallengeModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMathChallengeModal() {
+            const modal = document.getElementById('mathChallengeModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the content
+        document.getElementById('mathChallengeModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeMathChallengeModal();
+            }
+        });
+
+        // Project Image Slider Functionality
+        const sliderStates = {};
+
+        // Initialize sliders
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize all sliders
+            const sliders = document.querySelectorAll('[data-slider]');
+            sliders.forEach(slider => {
+                const sliderId = slider.dataset.slider;
+                sliderStates[sliderId] = {
+                    currentSlide: 0,
+                    totalSlides: slider.querySelectorAll('.slider-slide').length,
+                    autoPlayInterval: null
+                };
+                
+                // Start autoplay
+                startAutoPlay(sliderId);
+                
+                // Pause on hover
+                slider.closest('.group').addEventListener('mouseenter', () => {
+                    stopAutoPlay(sliderId);
+                });
+                
+                slider.closest('.group').addEventListener('mouseleave', () => {
+                    startAutoPlay(sliderId);
+                });
+            });
+        });
+
+        // Slide navigation function
+        function slideProject(sliderId, direction) {
+            const state = sliderStates[sliderId];
+            if (!state) return;
+            
+            if (direction === 'next') {
+                state.currentSlide = (state.currentSlide + 1) % state.totalSlides;
+            } else {
+                state.currentSlide = (state.currentSlide - 1 + state.totalSlides) % state.totalSlides;
+            }
+            
+            updateSlider(sliderId);
+        }
+
+        // Go to specific slide
+        function goToSlide(sliderId, slideIndex) {
+            const state = sliderStates[sliderId];
+            if (!state) return;
+            
+            state.currentSlide = slideIndex;
+            updateSlider(sliderId);
+        }
+
+        // Update slider position
+        function updateSlider(sliderId) {
+            const state = sliderStates[sliderId];
+            const slider = document.querySelector(`[data-slider="${sliderId}"]`);
+            if (!slider || !state) return;
+            
+            // Update transform
+            slider.style.transform = `translateX(-${state.currentSlide * 100}%)`;
+            
+            // Update dots
+            const dots = slider.closest('.group').querySelectorAll('.slider-dot');
+            dots.forEach((dot, index) => {
+                if (index === state.currentSlide) {
+                    dot.classList.remove('bg-white/30');
+                    dot.classList.add('bg-white/50');
+                } else {
+                    dot.classList.remove('bg-white/50');
+                    dot.classList.add('bg-white/30');
+                }
+            });
+        }
+
+        // Autoplay functionality
+        function startAutoPlay(sliderId) {
+            const state = sliderStates[sliderId];
+            if (!state) return;
+            
+            // Clear existing interval
+            stopAutoPlay(sliderId);
+            
+            // Set new interval
+            state.autoPlayInterval = setInterval(() => {
+                slideProject(sliderId, 'next');
+            }, 3000); // Change slide every 3 seconds
+        }
+
+        function stopAutoPlay(sliderId) {
+            const state = sliderStates[sliderId];
+            if (!state || !state.autoPlayInterval) return;
+            
+            clearInterval(state.autoPlayInterval);
+            state.autoPlayInterval = null;
+        }
+
+        // Touch/Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelectorAll('[data-slider]').forEach(slider => {
+            const sliderId = slider.dataset.slider;
+            const container = slider.closest('.group');
+            
+            container.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+            
+            container.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe(sliderId);
+            });
+        });
+
+        function handleSwipe(sliderId) {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swiped left - next slide
+                    slideProject(sliderId, 'next');
+                } else {
+                    // Swiped right - previous slide
+                    slideProject(sliderId, 'prev');
+                }
+            }
+        }
+
+        // project video
+        const overlay = document.getElementById('heartbeatOverlay');
+        const video = document.getElementById('heartbeatVideo');
+
+        if (overlay && video) {
+            overlay.addEventListener('click', async () => {
+                overlay.classList.add('hidden');
+                video.classList.remove('hidden');
+
+                video.muted = false;     // enable sound
+                video.controls = true;   // show controls (volume, etc.)
+
+                try {
+                await video.play();
+                } catch (e) {
+                console.warn('Playback requires user action:', e);
+                }
+            });
+        }
+
+
+
+
+        // 
+        // Typing Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const roles = [
+                // 'Founder',
+                // 'Entrepreneur',
+                // 'Researcher',
+                // 'Innovator',
+                // 'Programmer',
+                // 'Entrepreneur',
+                // 'Researcher', 
+                // 'Founder',
+                // 'Innovator',
+                // 'Tech Leader',
+                // 'Problem Solver',
+                // 'Visionary'
+                'Founder',
+                'Entrepreneur',
+                'Researcher', 
+                'Innovator', 
+                'programmer', 
+                'Tech Leader'
+            ];
+            
+            let currentRoleIndex = 0;
+            let currentCharIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+            
+            const typedTextElement = document.getElementById('typed-text');
+            
+            function typeWriter() {
+                const currentRole = roles[currentRoleIndex];
+                
+                if (isDeleting) {
+                    // Remove characters
+                    typedTextElement.textContent = currentRole.substring(0, currentCharIndex - 1);
+                    currentCharIndex--;
+                    typingSpeed = 50;
+                } else {
+                    // Add characters
+                    typedTextElement.textContent = currentRole.substring(0, currentCharIndex + 1);
+                    currentCharIndex++;
+                    typingSpeed = 100;
+                }
+                
+                // Check if word is complete
+                if (!isDeleting && currentCharIndex === currentRole.length) {
+                    // Pause at the end
+                    typingSpeed = 2000;
+                    isDeleting = true;
+                } else if (isDeleting && currentCharIndex === 0) {
+                    isDeleting = false;
+                    currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+                    typingSpeed = 500;
+                }
+                
+                setTimeout(typeWriter, typingSpeed);
+            }
+            
+            // Start typing animation
+            typeWriter();
+
+
+            // Mobile NGL Modal Handler
+            const mobileNGLBtn = document.getElementById('mobile-ngl-btn');
+            const mobileNGLModal = document.getElementById('mobile-ngl-modal');
+            
+            mobileNGLBtn?.addEventListener('click', function() {
+                mobileNGLModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scroll
+                
+                // Animate modal appearance
+                setTimeout(() => {
+                    mobileNGLModal.querySelector('.bg-gray-800').style.transform = 'scale(1)';
+                    mobileNGLModal.querySelector('.bg-gray-800').style.opacity = '1';
+                }, 10);
+            });
+            
+            // Add badge notification animation
+            let messageCount = 0;
+            setInterval(() => {
+                // Simulate new message notification
+                if (Math.random() > 0.8) { // 20% chance every interval
+                    messageCount++;
+                    showNotificationBadge();
+                }
+            }, 30000); // Check every 30 seconds
+            
+            function showNotificationBadge() {
+                const badge = document.createElement('div');
+                badge.className = 'absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full animate-ping';
+                mobileNGLBtn?.appendChild(badge);
+                
+                // Remove badge after 5 seconds
+                setTimeout(() => {
+                    badge.remove();
+                }, 5000);
+            }
+        });
+
+        // Close Mobile NGL Modal
+        function closeMobileNGL() {
+            const modal = document.getElementById('mobile-ngl-modal');
+            modal.querySelector('.bg-gray-800').style.transform = 'scale(0.95)';
+            modal.querySelector('.bg-gray-800').style.opacity = '0';
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = ''; // Restore scrolling
+            }, 300);
+        }
+
+        // Parallax effect for background elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.absolute.bg-neon-blue\\/10, .absolute.bg-neon-purple\\/10');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = 0.5 * (index + 1);
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Handle iframe responsiveness
+        window.addEventListener('resize', () => {
+            const iframeContainer = document.querySelector('.ngl-iframe-container');
+            if (iframeContainer && window.innerWidth < 768) {
+                const iframe = iframeContainer.querySelector('iframe');
+                if (iframe) {
+                    iframe.style.height = '350px';
+                }
+            }
+        });
+
+        // Add keyboard shortcut for anonymous message
+        document.addEventListener('keydown', (e) => {
+            // Press 'M' key to open mobile modal on desktop
+            if (e.key === 'm' || e.key === 'M') {
+                if (window.innerWidth >= 1024) {
+                    // Scroll to NGL section
+                    const nglSection = document.querySelector('.ngl-iframe-container');
+                    nglSection?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Add highlight effect
+                    nglSection?.parentElement.classList.add('ring-2', 'ring-neon-purple');
+                    setTimeout(() => {
+                        nglSection?.parentElement.classList.remove('ring-2', 'ring-neon-purple');
+                    }, 2000);
+                }
+            }
+        });
+
+
+        // Training Tab Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Training category filter
+            const trainingTabs = document.querySelectorAll('.training-tab');
+            const trainingCards = document.querySelectorAll('.training-card');
+            
+            trainingTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Update active tab
+                    trainingTabs.forEach(t => {
+                        t.classList.remove('active', 'bg-neon-blue/20', 'border-neon-blue');
+                        t.classList.add('border-gray-600');
+                    });
+                    tab.classList.add('active', 'bg-neon-blue/20', 'border-neon-blue');
+                    tab.classList.remove('border-gray-600');
+                    
+                    // Filter training cards
+                    const category = tab.dataset.category;
+                    trainingCards.forEach(card => {
+                        if (category === 'all' || card.dataset.trainingCategory.includes(category)) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'scale(1)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.9)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+
+        // Initialize particles with performance optimization
+        const isMobile = window.innerWidth < 768;
+        
+        tsParticles.load("particles-js", {
+            particles: {
+                number: {
+                    value: isMobile ? 20 : 50,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: ["#00D4FF", "#7B2FFF", "#FF2E97"]
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 1,
+                        minimumValue: 0.1,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                    animation: {
+                        enable: true,
+                        speed: 2,
+                        minimumValue: 0.1,
+                        sync: false
+                    }
+                },
+                links: {
+                    enable: !isMobile,
+                    distance: 150,
+                    color: "#00D4FF",
+                    opacity: 0.2,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: isMobile ? 1 : 2,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    outModes: {
+                        default: "bounce"
+                    },
+                    attract: {
+                        enable: false,
+                        rotateX: 600,
+                        rotateY: 1200
+                    }
+                }
+            },
+            interactivity: {
+                detectsOn: "canvas",
+                events: {
+                    onHover: {
+                        enable: !isMobile,
+                        mode: "grab"
+                    },
+                    onClick: {
+                        enable: true,
+                        mode: "push"
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        links: {
+                            opacity: 0.5
+                        }
+                    },
+                    push: {
+                        quantity: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn.classList.toggle('active');
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+        });
+        
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.classList.remove('active');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+        
+        // Smooth Scroll for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Intersection Observer for Reveal Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Animate progress bars when skills section is visible
+                    if (entry.target.querySelector('.progress-fill')) {
+                        entry.target.querySelectorAll('.progress-fill').forEach(bar => {
+                            setTimeout(() => {
+                                bar.style.width = bar.dataset.width;
+                            }, 200);
+                        });
+                    }
+                    
+                    // Animate counters
+                    if (entry.target.querySelector('.counter')) {
+                        entry.target.querySelectorAll('.counter').forEach(counter => {
+                            animateCounter(counter);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Counter Animation
+        function animateCounter(counter) {
+            const target = parseInt(counter.dataset.target);
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    counter.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    counter.textContent = target;
+                }
+            };
+            
+            updateCounter();
+        }
+        
+
+        
+        // Theme Toggle (optional)
+        const themeToggle = document.getElementById('theme-toggle');
+        let isDark = true;
+        
+        themeToggle?.addEventListener('click', () => {
+            isDark = !isDark;
+            document.documentElement.classList.toggle('dark', isDark);
+            themeToggle.innerHTML = isDark 
+                ? '<i class="fas fa-moon text-yellow-400"></i>' 
+                : '<i class="fas fa-sun text-yellow-400"></i>';
+        });
+        
+        // Active Navigation Highlight
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+            
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                const navLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
+                
+                if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('text-neon-blue');
+                    });
+                    navLink?.classList.add('text-neon-blue');
+                }
+            });
+        });
+        
+        // Parallax Effect for Particles
+        if (!isMobile) {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallax = document.getElementById('particles-js');
+                const speed = 0.5;
+                parallax.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        }
+    </script>
+</body>
+</html>
